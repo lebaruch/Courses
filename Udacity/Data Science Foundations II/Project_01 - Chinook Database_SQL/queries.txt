@@ -1,0 +1,230 @@
+Grupo de Perguntas 1
+
+/*Query 1
+SELECT
+  billingcountry,
+  COUNT(*)
+FROM invoice
+GROUP BY 1
+ORDER BY 2 DESC
+
+
+
+/*Query 2
+SELECT
+  billingcity,
+  SUM(total)
+FROM Invoice
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1
+
+
+
+/*Query 3
+SELECT
+  i.customerid,
+  c.firstname,
+  SUM(i.total)
+FROM invoice i
+JOIN customer c
+  ON c.customerid = i.customerid
+GROUP BY 1
+ORDER BY 3 DESC
+LIMIT 1
+
+------------------------------------------------------------
+
+Grupo de Perguntas 2
+
+
+/*Query 1
+WITH genre_table
+AS (SELECT
+  il.invoiceid,
+  tr.genreid,
+  g.name genre_name
+FROM invoiceline il
+JOIN track tr
+  ON il.trackid = tr.trackid
+JOIN genre g
+  ON tr.genreid = g.genreid
+GROUP BY 1)
+
+SELECT
+  c.email,
+  c.firstname,
+  c.lastname,
+  g.genre_name
+FROM customer c
+JOIN invoice i
+  ON c.customerid = i.customerid
+JOIN genre_table g
+  ON i.invoiceid = g.invoiceid
+WHERE g.genre_name = 'Rock'
+GROUP BY 1
+ORDER BY 1
+
+
+
+/*Query 2
+SELECT
+  art.artistid,
+  art.name,
+  COUNT(*) songs_qty
+FROM artist art
+JOIN album alb
+  ON art.artistid = alb.artistid
+JOIN track tr
+  ON alb.albumid = tr.albumid
+JOIN genre g
+  ON tr.genreid = g.genreid
+WHERE g.name = 'Rock'
+GROUP BY 1
+ORDER BY 3 DESC
+LIMIT 10
+
+
+
+/*Query 3
+WITH sub1
+AS (SELECT
+  art.artistid,
+  art.name,
+  SUM(il.unitprice) total_earned
+FROM artist art
+JOIN album alb
+  ON art.artistid = alb.artistid
+JOIN track tr
+  ON alb.albumid = tr.albumid
+JOIN genre g
+  ON tr.genreid = g.genreid
+JOIN invoiceline il
+  ON tr.trackid = il.trackid
+GROUP BY 1
+ORDER BY 3 DESC
+LIMIT 1 )
+
+
+SELECT
+  sub1.artistid,
+  sub1.name,
+  c.customerid,
+  c.firstname,
+  c.lastname,
+  SUM(il.unitprice) total_spent
+FROM customer c
+JOIN invoice i
+  ON c.customerid = i.customerid
+JOIN invoiceline il
+  ON i.invoiceid = il.invoiceid
+JOIN track tr
+  ON il.trackid = tr.trackid
+JOIN album alb
+  ON tr.albumid = alb.albumid
+JOIN artist art
+  ON alb.artistid = art.artistid
+JOIN sub1
+  ON art.artistid = sub1.artistid
+
+GROUP BY 3
+ORDER BY 6 DESC
+LIMIT 1
+
+------------------------------------------------------------
+
+Grupo de Perguntas 3
+
+
+/*Query 1
+WITH sub1
+AS (SELECT
+  COUNT(*) purchases,
+  c.country,
+  g.name,
+  g.genreid
+FROM customer c
+JOIN invoice i
+  ON c.customerid = i.customerid
+JOIN invoiceline il
+  ON i.invoiceid = il.invoiceid
+JOIN track tr
+  ON il.trackid = tr.trackid
+JOIN genre g
+  ON tr.genreid = g.genreid
+GROUP BY 3,
+         2),
+
+sub2
+AS (SELECT
+  s1.purchases,
+  s1.country,
+  s1.name,
+  s1.genreid,
+  RANK() OVER (PARTITION BY s1.country ORDER BY purchases DESC) AS rank_id
+FROM sub1 s1)
+
+SELECT
+  purchases,
+  country,
+  name,
+  genreid
+FROM sub2
+WHERE rank_id = 1
+
+
+
+/*Query 2
+WITH sub1
+AS (SELECT
+  name,
+  milliseconds
+FROM track
+ORDER BY 2 DESC),
+
+sub2
+AS (SELECT
+  AVG(milliseconds) AS avg_time
+FROM track)
+
+SELECT
+  name,
+  milliseconds
+FROM sub1,
+     sub2
+WHERE sub1.milliseconds > sub2.avg_time
+
+
+
+/*Query 3
+WITH sub1
+AS (SELECT
+  c.country,
+  SUM(i.total) total_spent,
+  c.firstname,
+  c.lastname,
+  c.customerid
+FROM customer c
+JOIN invoice i
+  ON c.customerid = i.customerid
+GROUP BY 5),
+
+sub2
+AS (SELECT
+  country,
+  total_spent,
+  firstname,
+  lastname,
+  customerid,
+  RANK() OVER (PARTITION BY country ORDER BY total_spent DESC) AS rank_id
+FROM sub1)
+
+SELECT
+  country,
+  total_spent,
+  firstname,
+  lastname,
+  customerid
+FROM sub2
+WHERE rank_id = 1
+ORDER BY 1
