@@ -38,7 +38,7 @@ summary(senado)
 # Reading file with delimiter
 read_delim('D:/DataScience/Courses/Data Science Brazil Marathon/Week_04/arquivo_separado_por#.txt', delim = '#')
 #Reading CSV file with delimiter | and storing it in a variable
-ta_precos_medicamentos <- read_delim("D:/DataScience/Courses/Data Science Brazil Marathon/Week_04/TA_PRECOS_MEDICAMENTOS.csv", delim = |)
+ta_precos_medicamentos <- read_delim("D:/DataScience/Courses/Data Science Brazil Marathon/Week_04/TA_PRECOS_MEDICAMENTOS.csv", delim = "|")
 
 #Reading TXT file with fixed widths columns
 fwf_samples <- read_fwf("D:/DataScience/Courses/Data Science Brazil Marathon/Week_04/fwf-sample.txt", col_positions =
@@ -127,13 +127,9 @@ senado2 <- mutate(senado2, Regiao = ifelse(State%in%c('AM','AC','TO','PA','RO','
                                                          ifelse(State%in%c('PR','SC','RS'),'Sul','Nordeste')))))
 
 
-
-
-
-
-
-
-
+#Installing package stringr and importing it
+install.packages('stringr')
+library(stringr)
 
 
 
