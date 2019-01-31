@@ -4,6 +4,9 @@ All files are working and some of them requires special tips that are in their R
 
 
 Regards,
+
 Leandro Baruch
+
 Data Scientist, PMP
+
 leandrobaruch@gmail.com
