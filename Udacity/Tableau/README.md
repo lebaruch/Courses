@@ -1,3 +1,3 @@
 # General Information
 
-Exercised using Tableau Public
+Exercises using Tableau Public
