@@ -9,7 +9,8 @@ In this project I had to wrangling WeRateDogs tweets data in order to create int
 - Numpy
 - Matplotlib
 
-#Files
+
+# Files
 
 - `wrangle_act`: notebook of the data wrangling project, there is also a HTML version for better view
 - `twitter-archive-enhanced.csv` and `twitter_archive_master.csv`: both are database used to gather information
