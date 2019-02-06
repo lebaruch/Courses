@@ -5,3 +5,13 @@ First, I explored how the census data is recorded. Then I have applied a series 
 Then I had to evaluate various models of supervised learning of your choice over the data to determine which is best suited for the solution. 
 After that, I did optimize the template I have selected and present it as your solution for CharityML. 
 Finally, I did explore the chosen model and its predictions from underneath the cloths to evaluate its performance considering the data available.
+
+# Version and libraries
+
+- Python 3.7
+- Pandas
+- Numpy
+- Matplotlib
+- Sklearn
+
+# Files
