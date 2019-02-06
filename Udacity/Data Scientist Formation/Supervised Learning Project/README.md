@@ -15,3 +15,7 @@ Finally, I did explore the chosen model and its predictions from underneath the 
 - Sklearn
 
 # Files
+
+- `census.csv`: database where I gathered data
+- `finding_donors_PT`: notebook with all the work done
+- `visuals.py`: code to improve visualization of the notebook
