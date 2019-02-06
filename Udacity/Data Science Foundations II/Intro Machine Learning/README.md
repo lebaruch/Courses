@@ -1,4 +1,13 @@
-Python 2.7
+# Version and Libraries
+
+- Python 2.7
+- Pandas
+- Numpy
+- Matplotlib
+- Sklearn
+- Scipy
+
+# General Information
 
 Machine Learning Course with a final Project
 
