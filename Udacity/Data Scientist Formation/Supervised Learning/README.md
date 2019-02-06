@@ -2,7 +2,7 @@
 
 Supervised Learning exercises
 
-#Version and libraries
+# Version and libraries
 
 - Python 3.7
 - Pandas
