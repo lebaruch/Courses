@@ -7,5 +7,6 @@ This course encompasses:
 - Statistics
 - Introduction to Machine Learning
 
-Each step has a big project that you can find in the folders.
-`Intro Machine Learning` has many of Machine Learning mini projects, and you can find them on its folder as well.
+Each module has a project that you can find in the folders.
+
+`Intro Machine Learning` has some of Machine Learning mini projects and you can find them on its folder as well.
