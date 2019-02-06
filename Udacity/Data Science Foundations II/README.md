@@ -1,4 +1,4 @@
-# My second (big) step in the Data Science world.
+# General Information
 
 This course encompasses:
 
