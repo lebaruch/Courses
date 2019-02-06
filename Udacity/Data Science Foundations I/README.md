@@ -1,4 +1,4 @@
-# My first Data Science course
+# General Information
 
 This course encompasses:
 
