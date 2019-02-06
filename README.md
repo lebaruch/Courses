@@ -1,4 +1,6 @@
-Courses that I have made in Data Science field, separated by schools
+# General Information
+
+These projects refer to the courses that I have made in Data Science. 
 
 All files are working and some of them requires special tips that are in their READMEs
 
