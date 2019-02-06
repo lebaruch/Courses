@@ -1,8 +1,8 @@
 # Version and libraries
 
-Python 3.6
-Pandas
-Matplotlib
+- Python 3.6
+- Pandas
+- Matplotlib
 
 # Files
 
