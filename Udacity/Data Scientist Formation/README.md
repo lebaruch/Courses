@@ -8,3 +8,12 @@ This course encompasses:
 - Data Analysis with R
 
 All modules with their respective projects.
+
+# Version and libraries
+
+- Python 3.7
+- Pandas
+- Numpy
+- Matplotlib
+- Sklearn
+
